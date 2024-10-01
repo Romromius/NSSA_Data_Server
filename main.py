@@ -25,7 +25,7 @@ def pull_updates():
         return False
 
 
-@app.route('/')
+@app.route('/get_knowledge')
 def index():
     response = {}
     db = NSSADataBank()
@@ -42,11 +42,15 @@ def index():
 @app.route('/update')
 def update():
     responce = {}
+    responce['status'] = 'OK'
     responce['has_updates'] = check_for_updates()
+
     if responce['has_updates']:
         update_status = pull_updates()
+
     if update_status:
         responce['status'] = 'OK'
+
     return jsonify(responce)
 
 
