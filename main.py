@@ -39,6 +39,14 @@ def index():
     return jsonify(response)
 
 
+@app.route('/cc/sync')
+def sync_cc():
+    user = request.args.get('user')
+    copro_coins = request.args.get('coins')
+    print(user, copro_coins)
+    return 'OK'
+
+
 @app.route('/update')
 def update():
     responce = {}
